@@ -1,9 +1,16 @@
-import { root } from '@lynx-js/react'
+import { furnituresPictures } from "./Pictures/furnitures/furnituresPictures.jsx";
+import ImageCard from "./ImageCard.jsx";
+// import "../index.scss";
 
-import { App as ImageCard } from './ImageCard.jsx'
+import { root } from "@lynx-js/react";
 
-root.render(<ImageCard />)
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
+function FirstImageCard() {
+  const MyFirstPicture = furnituresPictures[0];
+  return (
+    <view className="gallery-wrapper single-card">
+      <ImageCard picture={MyFirstPicture} />
+    </view>
+  );
 }
+
+root.render(<FirstImageCard />);
