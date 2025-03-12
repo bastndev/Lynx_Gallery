@@ -60,6 +60,11 @@ text {
   height: 100px;
   animation: Logo--shake infinite 0.5s ease;
 }
+.mayer{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
 
 @keyframes Logo--spin {
   from {
