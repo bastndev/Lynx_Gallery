@@ -4,7 +4,7 @@ export function App() {
   return (
     <view className="App">
       <view className="Background" />
-      <text className="Title">2024</text>
+      <text className="Title">Hello world 21</text>
     </view>
   );
 }
