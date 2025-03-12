@@ -1,9 +1,10 @@
-import "./App.css";
+import "./Index.css";
 
 export function App() {
   return (
     <view className="App">
-      <text className="Title">React Native 3</text>
+      <view className="Background" />
+      <text className="Title">2024</text>
     </view>
   );
 }
