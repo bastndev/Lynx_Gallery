@@ -7,9 +7,9 @@
   position: fixed;
   background: radial-gradient(
     71.43% 62.3% at 46.43% 36.43%,
-    rgba(255, 140, 0, 0.3) 0%, 
-    rgba(0, 127, 255, 0.5) 56.35%,
-    #0047ab 100%
+    rgba(16, 35, 1, 0.3) 0%, 
+    rgba(83, 232, 3, 0.5) 56.35%,
+    #a4e806 100%
   );
   box-shadow: 0px 12.93px 28.74px 0px #ffd28db2 inset;
   border-radius: 50%;
