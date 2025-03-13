@@ -1,10 +1,9 @@
-import { furnituresPictures } from "./Pictures/furnitures/furnituresPictures.jsx";
-
 import { root } from "@lynx-js/react";
-import Gallery from "./GalleryImg.jsx";
+import { furnituresPictures } from "./Pictures/furnitures/furnituresPictures.jsx";
+import { Gallery } from "./GalleryAuto.jsx";
 
-function PictureList() {
+function AddAutoScroll() {
   return <Gallery pictureData={furnituresPictures} />;
 }
 
-root.render(<PictureList />);
+root.render(<AddAutoScroll />);
