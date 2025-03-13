@@ -1,7 +1,7 @@
-import "./Index.css";
+import "../Index.css";
 
-import type { Picture } from "./Pictures/furnitures/furnituresPictures.jsx";
-import LikeIcon from "./Components/LikeIcon.jsx";
+import type { Picture } from "../Pictures/furnitures/furnituresPictures.jsx";
+import LikeIcon from "./LikeIcon.jsx";
 
 export default function LikeImageCard(props: { picture: Picture }) {
   const { picture } = props;
