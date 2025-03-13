@@ -1,16 +1,28 @@
 import "./Index.css";
 
-import { useEffect, useRef } from "@lynx-js/react";
-import type { ScrollEvent } from "@lynx-js/types";
+import { useEffect, useMainThreadRef, useRef } from "@lynx-js/react";
+import { MainThread, type ScrollEvent } from "@lynx-js/types";
 import type { NodesRef } from "@lynx-js/types";
 import LikeImageCard from "./Components/ImageCard.jsx";
 import type { Picture } from "./Pictures/furnitures/furnituresPictures.jsx";
 import { calculateEstimatedSize } from "./utils.jsx";
 import { NiceScrollbar, type NiceScrollbarRef } from "./Components/NiceScrollBar.jsx";
+import { adjustScrollbarMTS, NiceScrollbarMTS } from "./Components/NiceScrollBarMTS.jsx";
 
 export const Gallery = (props: { pictureData: Picture[] }) => {
   const { pictureData } = props;
   const scrollbarRef = useRef<NiceScrollbarRef>(null);
+  const scrollbarMTSRef = useMainThreadRef<MainThread.Element>(null);
+  const galleryRef = useRef<NodesRef>(null);
+
+  const onScrollMTS = (event: ScrollEvent) => {
+    "main thread";
+    adjustScrollbarMTS(
+      event.detail.scrollTop,
+      event.detail.scrollHeight,
+      scrollbarMTSRef,
+    );
+  };
 
   const onScroll = (event: ScrollEvent) => {
     scrollbarRef.current?.adjustScrollbar(
@@ -18,8 +30,6 @@ export const Gallery = (props: { pictureData: Picture[] }) => {
       event.detail.scrollHeight,
     );
   };
-
-  const galleryRef = useRef<NodesRef>(null);
 
   useEffect(() => {
     galleryRef.current
@@ -36,6 +46,7 @@ export const Gallery = (props: { pictureData: Picture[] }) => {
   return (
     <view className="gallery-wrapper">
       <NiceScrollbar ref={scrollbarRef} />
+      <NiceScrollbarMTS main-thread:ref={scrollbarMTSRef} />
       <list
         ref={galleryRef}
         className="list"
@@ -44,13 +55,11 @@ export const Gallery = (props: { pictureData: Picture[] }) => {
         scroll-orientation="vertical"
         custom-list-name="list-container"
         bindscroll={onScroll}
+        main-thread:bindscroll={onScrollMTS}
       >
         {pictureData.map((picture: Picture, index: number) => (
           <list-item
-            estimated-main-axis-size-px={calculateEstimatedSize(
-              picture.width,
-              picture.height,
-            )}
+            estimated-main-axis-size-px={calculateEstimatedSize(picture.width, picture.height)}
             item-key={"" + index}
             key={"" + index}
           >
