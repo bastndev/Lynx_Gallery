@@ -1,15 +1,19 @@
-## Rspeedy project
+# Tutorial Gallery App
+
+<!-- Option 1: Using img tag -->
+<img src="public/github/gallery.gif" alt="Gallery App Demo" width="50%" />
+
+<!-- Option 2: Using div with background image -->
+
 
 This is a ReactLynx project bootstrapped with `create-rspeedy`.
 
 ## Getting Started
 
-Create project
-```bash
-bun create rspeedy@latest
-```
+Download project next ⤵️
 
-First, install the dependencies:
+
+install the dependencies:
 
 ```bash
 bun install
