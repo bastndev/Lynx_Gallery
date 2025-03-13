@@ -7,7 +7,7 @@ import LikeImageCard from "./Components/ImageCard.jsx";
 import type { Picture } from "./Pictures/furnitures/furnituresPictures.jsx";
 import { calculateEstimatedSize } from "./utils.jsx";
 import { NiceScrollbar, type NiceScrollbarRef } from "./Components/NiceScrollBar.jsx";
-import { adjustScrollbarMTS, NiceScrollbarMTS } from "./Components/NiceScrollBarMTS.jsx";
+// import { adjustScrollbarMTS, NiceScrollbarMTS } from "./Components/NiceScrollBarMTS.jsx";
 
 export const Gallery = (props: { pictureData: Picture[] }) => {
   const { pictureData } = props;
@@ -15,14 +15,14 @@ export const Gallery = (props: { pictureData: Picture[] }) => {
   const scrollbarMTSRef = useMainThreadRef<MainThread.Element>(null);
   const galleryRef = useRef<NodesRef>(null);
 
-  const onScrollMTS = (event: ScrollEvent) => {
-    "main thread";
-    adjustScrollbarMTS(
-      event.detail.scrollTop,
-      event.detail.scrollHeight,
-      scrollbarMTSRef,
-    );
-  };
+  // const onScrollMTS = (event: ScrollEvent) => {
+  //   "main thread";
+  //   adjustScrollbarMTS(
+  //     event.detail.scrollTop,
+  //     event.detail.scrollHeight,
+  //     scrollbarMTSRef,
+  //   );
+  // };
 
   const onScroll = (event: ScrollEvent) => {
     scrollbarRef.current?.adjustScrollbar(
@@ -46,7 +46,7 @@ export const Gallery = (props: { pictureData: Picture[] }) => {
   return (
     <view className="gallery-wrapper">
       <NiceScrollbar ref={scrollbarRef} />
-      <NiceScrollbarMTS main-thread:ref={scrollbarMTSRef} />
+      {/* <NiceScrollbarMTS main-thread:ref={scrollbarMTSRef} /> */}
       <list
         ref={galleryRef}
         className="list"
@@ -55,7 +55,7 @@ export const Gallery = (props: { pictureData: Picture[] }) => {
         scroll-orientation="vertical"
         custom-list-name="list-container"
         bindscroll={onScroll}
-        main-thread:bindscroll={onScrollMTS}
+        // main-thread:bindscroll={onScrollMTS}
       >
         {pictureData.map((picture: Picture, index: number) => (
           <list-item
