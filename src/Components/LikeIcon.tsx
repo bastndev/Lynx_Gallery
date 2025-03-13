@@ -1,12 +1,13 @@
 import { useState } from "@lynx-js/react";
 import redHeart from "../Pictures/redHeart.png";
 import whiteHeart from "../Pictures/whiteHeart.png";
-// import "../index.scss";
+import "../Index.css";
+
 
 export default function LikeIcon() {
   const [isLiked, setIsLiked] = useState(false);
   const onTap = () => {
-    setIsLiked(true);
+    setIsLiked(!isLiked);
   };
   return (
     <view className="like-icon" bindtap={onTap}>
